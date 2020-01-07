@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <category>
+    <pattern>*</pattern>
+    <template>I have no answer for that.</template>
+  </category>
+  
+<category>
+    <pattern>HELLO</pattern>
+    <template>
+        <random>
+            <li>Hi there,may I help you?</li>
+            <li>Yes, anything I can help you?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>HI</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>What did you say</pattern>
+    <template>
+        I said <response/>
+    </template>
+</category>
+
+<category>
+    <pattern>MY NAME IS *</pattern>
+    <template>
+        Hello <set name="firstname"><star/></set>. May I help you?
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS MY NAME</pattern>
+    <template>
+        <condition name="firstname">
+            <li value="unknown">I have no idea</li>
+            <li>You just told me that you are <get name="firstname"/></li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>SEARCH *</pattern>
+    <template>
+        Here is our <star/> website.
+        <button>
+            <text>Visit our Website</text>
+            <url>http://<star/>.com</url>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>video</pattern>
+    <template>
+    Do you want to watch our video?
+    <link>
+        <text>play video</text>
+        <url>https://www.facebook.com/LazadaMalaysia/videos/2342086279168508/</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>option video</pattern>
+    <template>
+    Do you want to watch our video?
+    <link>
+        <text>play video</text>
+        <url>https://www.pandorabots.com/mitsuku/img/mitsuku.mp4</url>
+    </link>
+    </template>
+</category>
+
+<category>
+    <pattern>^<set>register</set>^</pattern>
+    <template>
+        There are many ways to register an account.
+        <button>
+            <text>Mobile</text>
+            <postback>CHOOSEMOBILE</postback>
+        </button>
+        <button>
+            <text>Facebook</text>
+            <postback>CHOOSEFB</postback>
+        </button>
+        <button>
+            <text>Google</text>
+            <postback>CHOOSEGOOGLE</postback>
+        </button>
+    </template>
+</category>
+    
+<category>
+    <pattern>CHOOSEMOBILE</pattern>
+    <template>
+        You have to enter your mobile number and verify with SMS code.
+        <image>https://beebot-sg-knowledgecloud.oss-ap-southeast-1.aliyuncs.com/kc/kc-media/kc-oss-1565331830995-image.png</image> 
+        Do you want to register? 
+        <reply>
+            <text>Yes</text>
+            <postback>CHOOSEYES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>CHOOSENO</postback>
+        </reply>
+    </template>
+</category>
+    
+<category>
+    <pattern>CHOOSEFB</pattern>
+    <template>
+        You have to enter your FB email and password to connect and create account. 
+        <image>https://beebot-sg-knowledgecloud.oss-ap-southeast-1.aliyuncs.com/kc/kc-media/kc-oss-1565331841682-image.png</image>
+        Do you want to register? 
+        <reply>
+            <text>Yes</text>
+            <postback>CHOOSEYES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>CHOOSENO</postback>
+        </reply>
+    </template>
+</category>
+    
+<category>
+    <pattern>CHOOSEGOOGLE</pattern>
+    <template>
+        You need to conect to your google account to create account.
+        <image>https://beebot-sg-knowledgecloud.oss-ap-southeast-1.aliyuncs.com/kc/kc-media/kc-oss-1565331851108-image.png</image>
+        Do you want to register? 
+        <reply>
+            <text>Yes</text>
+            <postback>CHOOSEYES</postback>
+        </reply>
+        <reply>
+            <text>No</text>
+            <postback>CHOOSENO</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>CHOOSEYES</pattern>
+    <template>
+        Click the link below to register
+        <link>
+            <text>Register Page</text>
+            <url>https://member.lazada.com.my/user/register?spm=a2o4k.home.header.d6.6c9a2e7e4aKOXm</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>CHOOSENO</pattern>
+    <template>Okay, anything that I can help you?</template>
+</category>
+
+<category>
+    <pattern>$DO NOT WANT REGISTER</pattern>
+    <template>Okay, anything else to ask?</template>
+</category>
+
+<category>
+    <pattern>$NO REGISTER</pattern>
+    <template>Okay, anything else to ask?</template>
+</category>
+
+<category>
+    <pattern>^<set>product</set>^</pattern>
+    <template>
+        Here are some products suggestions for you.
+        <random>
+        <li>
+        <button>
+            <text>Backpack</text>
+            <postback>BACKPACK</postback>
+        </button>
+        <button>
+            <text>T-shirt</text>
+            <postback>TSHIRT</postback>
+        </button>
+        <button>
+            <text>Mobile Phone</text>
+            <postback>PHONE</postback>
+        </button>
+        <button>
+            <text>Watches</text>
+            <postback>WATCHES</postback>
+        </button>
+        </li>
+        <li>
+        <button>
+            <text>T-shirt</text>
+            <postback>TSHIRT</postback>
+        </button>
+        <button>
+            <text>Lip Stick</text>
+            <postback>LIPSTICK</postback>
+        </button>
+        <button>
+            <text>Backpack</text>
+            <postback>BACKPACK</postback>
+        </button>
+        <button>
+            <text>Shoe</text>
+            <postback>SHOE</postback>   
+        </button>
+        </li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>BACKPACK</pattern>
+    <template>
+        Here are some backpacks suggestions.
+        <carousel>
+            <card>
+                <image>https://my-test-11.slatic.net/p/8fe42036b351c9269baac4ce7588371f.png</image>
+                <title>LouisWill Backpack</title>
+                <subtitle>Waterproof,USB Charging port</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-test-11.slatic.net/p/bbe3c79968d410b2a4d3fa5b1fa553b3.jpg</image>
+                <title>Adidas Sport Bag</title>
+                <subtitle>Adidas Neo Backpack</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>TSHIRT</pattern>
+    <template>
+        Here are some T-shirt suggestions.
+        <carousel>
+            <card>
+                <image>https://my-test-11.slatic.net/p/3d463d1349e434040e49be2974a5f5a9.jpg</image>
+                <title>DFYR Casual T-Shirt</title>
+                <subtitle>Short Sleeve,Round Neck</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-live-01.slatic.net/original/6b73ea0b85cfe4a61ac4d152972eac7a.jpg</image>
+                <title>Rainny Casual T-Shirt</title>
+                <subtitle>Short Sleeve,Cotton</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>PHONE</pattern>
+    <template>
+        Here are some mobile phone suggestions.
+        <carousel>
+            <card>
+                <image>https://my-test-11.slatic.net/p/982d4c9dfe254d32fe3db1aa527ee267.jpg</image>
+                <title>Samsung Galaxy A70</title>
+                <subtitle>8GB RAM,128GB ROM</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-live-01.slatic.net/original/2e736c86663520d1d9b730430b34e2ad.jpg</image>
+                <title>XiaoMi Mix2s</title>
+                <subtitle>6GB RAM,64GB ROM</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>WATCHES</pattern>
+    <template>
+        Here are some watches suggestions.
+        <carousel>
+            <card>
+                <image>https://my-test-11.slatic.net/p/c176faa8e54397adea5010ca7922e8a5.jpg</image>
+                <title>G-Shock_GA110</title>
+                <subtitle>Rubber Strap</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-test-11.slatic.net/p/1c261d5b7e86c3fc4509207ce14397e6.jpg</image>
+                <title>SKMEI Watch</title>
+                <subtitle>Stainless Steel</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>LIPSTICK</pattern>
+    <template>
+        Here are some lipsticks suggestions
+           <carousel>
+            <card>
+                <image>https://my-live-01.slatic.net/original/72609738c560e51afecf8f557f370a72.jpg</image>
+                <title>LOReal Lipstick</title>
+                <subtitle>color riche matte</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-test-11.slatic.net/p/5/yves-saint-laurent-rouge-volupte-shine-oil-in-stick-50-fuchsia-stiletto-8345-35743741-61f7921c3c33dcf1ead59035d7ca14b5.jpg_800x800q100.jpg</image>
+                <title>YSL Lipstick</title>
+                <subtitle>Rouge Volupte Shine Oil</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>SHOE</pattern>
+    <template>
+        Here are some shoes suggestions
+           <carousel>
+            <card>
+                <image>https://my-test-11.slatic.net/p/87a675b8e0764f800617a000ca962e01.jpg</image>
+                <title>BINXINKON Shoe</title>
+                <subtitle>Autumn and Winter Boots</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+            <card>
+                <image>https://my-test-11.slatic.net/p/9214564ba479683a3db569cca7a7b7f4.jpg</image>
+                <title>ANLUKE Shoe</title>
+                <subtitle>Women half slippers</subtitle>
+                <button>
+                    <text>Check it out on the website</text>
+                    <url>https://www.lazada.com.my/#hp-collections</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+<category>
+    <pattern>^<set>payment</set>^</pattern>
+    <template>
+        Questions about payment. 
+        <button>
+            <text>What Is E-WALLET?</text>
+            <postback>EWALLETASK</postback>
+        </button>
+        <button>
+            <text>Can Own Two E-WALLET?</text>
+            <postback>EWALLETTWO</postback>
+        </button>
+        <button>
+            <text>Can Withdraw Available Balance?</text>
+            <postback>EWALLETWITHDRAW</postback>
+        </button>
+        <button>
+            <text>Can use voucher with E-WALLET?</text>
+            <postback>EWALLETVOUCHER</postback>
+        </button>
+        <button>
+            <text>How to pay with E-WALLET</text>
+            <postback>EWALLETPAY</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>EWALLETASK</pattern>
+    <template>
+        Here is the description about E-Wallet.
+        <button>
+            <text>Activate E-WALLET</text>
+            <postback>ACTIVATEE</postback>
+        </button>
+        <button>
+            <text>Top up E-WALLET</text>
+            <postback>TOPUPE</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>EWALLETTWO</pattern>
+    <template>
+        The activation of E-WALLET is unique to a singular account.<split/>
+        Do you want to know more about it? <split/>Please click the link below. 
+        <link>
+            <text>Can have more E-WALLET?</text>
+            <url>https://www.lazada.com.my/helpcenter/Can-I-have-more-than-one-Lazada-Wallet.html?spm=a2o4k.helpcenter-topic.articles-list.8.1e3b4bd6qAbTnX</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>EWALLETWITHDRAW</pattern>
+    <template>
+        Only the amount in your Refunds section of your Available Balance in your Wallet is withdrawable. <split/>
+        Click the link below to know more about it. 
+        <link>
+            <text>How to withdraw available balance</text>
+            <url>https://www.lazada.com.my/helpcenter/Can-I-withdraw-the-available-balance-in-my-Lazada-Wallet.html?spm=a2o4k.helpcenter-topic.articles-list.10.1e3b4bd6qAbTnX</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>EWALLETVOUCHER</pattern>
+    <template>
+        Yes, using voucher with E-WALLET is allowed.<split/>
+        Click the link below to know more about it.
+        <link>
+            <text>Use voucher with E-WALLET.</text>
+            <url>https://www.lazada.com.my/helpcenter/Can-I-use-a-voucher-when-I-pay-using-Lazada-Wallet-.html?spm=a2o4k.helpcenter-topic.articles-list.9.1e3b4bd6qAbTnX</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>EWALLETPAY</pattern>
+    <template>
+        You have to select E-WALLET as payment method. <split/>
+        Click the link below to know more about it. 
+        <link>
+            <text>Pay with E-WALLET</text>
+            <url>https://www.lazada.com.my/helpcenter/how-do-i-pay-with-lazada-wallet.html?spm=a2o4k.helpcenter-topic.articles-list.3.1e3b4bd6qAbTnX</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>ACTIVATEE</pattern>
+    <template>
+        How to activate the E-WALLET.<split/>
+        Click the link below to know more.
+        <link>
+            <text>Activate it</text>
+            <url>https://www.lazada.com.my/helpcenter/What-is-Lazada-Wallet-and-how-do-I-activate-it.html?spm=a2o4k.helpcenter-topic.articles-list.6.1e3b4bd6yjdDGc</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>TOPUPE</pattern>
+    <template>
+        How to top up the E-WALLET. <split/>
+        Click the link below to know more.
+        <link>
+            <text>Top up.</text>
+            <url>https://www.lazada.com.my/helpcenter/how-do-i-top-up-my-lazada-wallet.html?spm=a2o4k.helpcenter-topic.articles-list.7.1e3b4bd6yjdDGc</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>$DO NOT WANT PAYMENT</pattern>
+    <template>Okay, anything else to ask?</template>
+</category>
+
+<category>
+    <pattern>$NO PAYMENT</pattern>
+    <template>Okay, anything else to ask?</template>
+</category>
+
+<category>
+    <pattern>^<set>shipping</set>^</pattern>
+    <template>
+        Questions about shipping
+        <button>
+            <text>When will I receive my orders?</text>
+            <postback>SHIPORDER</postback>
+        </button>
+        <button>
+            <text>My items semms stuck, what do i do?</text>
+            <postback>SHIPSTUCK</postback>
+        </button>
+        <button>
+            <text>How do I check the shipping fees?</text>
+            <postback>SHIPFEES</postback>
+        </button>
+        <button>
+            <text>How to get free shipping?</text>
+            <postback>SHIPFREE</postback>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>SHIPORDER</pattern>
+    <template>
+        Your order details will be visible at either "ToShip" or "ToReceive" <split/>
+        Click the link below to know more about it. 
+        <link>
+            <text>Receive Order</text>
+            <url>https://www.lazada.com.my/helpcenter/When-will-I-receive-my-orders.html?spm=a2o4k.helpcenter-topic.articles-list.1.356bfa30OJkDnP</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>SHIPSTUCK</pattern>
+    <template>
+        Do not worry if your order is within the date. <split/>
+        You will be notified. <split/>
+        Click the link below to know more about it. 
+        <link>
+            <text>Items stuck</text>
+            <url>https://www.lazada.com.my/helpcenter/Items%C2%A0in%C2%A0my-Order%C2%A0seems%C2%A0stuck-What-do-I-do.html?spm=a2o4k.helpcenter-topic.articles-list.3.356bfa30OJkDnP</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>SHIPFEES</pattern>
+    <template>
+        You can check your shipping fee:
+        <ol>
+            <li>On the product page</li>
+            <li>During checkout.</li>
+        </ol>
+        Click the link below to know more about it.
+        <link>
+            <text>Shipping fees</text>
+            <url>https://www.lazada.com.my/helpcenter/How-do-I-check-my-shipping-fee-when-placing-orders.html?spm=a2o4k.helpcenter-topic.articles-list.1.356bfa30OJkDnP</url>
+        </link>
+    </template>
+</category>
+
+<category>
+    <pattern>SHIPFREE</pattern>
+    <template>
+        Free Shipping is only available if Seller offers it on the product. <split/>
+        Click the link below to know more about it.
+        <link>
+            <text>Free Shipping fees.</text>
+            <url>https://www.lazada.com.my/helpcenter/How-can-I-get-Free-Shipping-.html?spm=a2o4k.helpcenter-topic.articles-list.3.356bfa30OJkDnP</url>
+        </link>
+    </template>
+</category>
+
+
+</aiml>
